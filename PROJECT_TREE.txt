@@ -1,0 +1,88 @@
+Project Structure:
+==================================================
+
+seotools/
+├── app
+│   ├── (main)
+│   │   ├── about
+│   │   │   └── page.tsx
+│   │   ├── blog
+│   │   │   ├── [slug]
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── faq
+│   │   │   └── page.tsx
+│   │   ├── tools
+│   │   │   ├── [category]
+│   │   │   │   ├── [tool]
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── api
+│   │   ├── robots.txt
+│   │   │   └── route.ts
+│   │   └── sitemap.xml
+│   │       └── route.ts
+│   ├── error.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── loading.tsx
+│   └── not-found.tsx
+├── components
+│   ├── blog
+│   │   ├── BlogCard.tsx
+│   │   ├── BlogContent.tsx
+│   │   └── BlogGrid.tsx
+│   ├── layout
+│   │   ├── Footer.tsx
+│   │   ├── MobileMenu.tsx
+│   │   ├── Navbar.tsx
+│   │   └── ThemeToggle.tsx
+│   ├── sections
+│   │   ├── CTA.tsx
+│   │   ├── Categories.tsx
+│   │   ├── Features.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Stats.tsx
+│   │   └── Testimonials.tsx
+│   ├── tools
+│   │   ├── ToolCard.tsx
+│   │   ├── ToolGrid.tsx
+│   │   └── ToolInterface.tsx
+│   └── ui
+│       ├── Accordion.tsx
+│       ├── Badge.tsx
+│       ├── Button.tsx
+│       ├── Card.tsx
+│       ├── Container.tsx
+│       ├── Input.tsx
+│       ├── Select.tsx
+│       └── Tabs.tsx
+├── hooks
+├── lib
+│   ├── analytics.ts
+│   ├── blog.ts
+│   ├── faq.ts
+│   ├── seo.ts
+│   ├── tools.ts
+│   └── utils.ts
+├── public
+│   └── images
+├── styles
+├── types
+│   └── index.ts
+├── .gitignore
+├── ARCHITECTURE.md
+├── README.md
+├── middleware.ts
+├── next-env.d.ts
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.ts
+└── tsconfig.json
+
+==================================================
+Total items: 81
