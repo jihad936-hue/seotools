@@ -1,7 +1,15 @@
 import { ToolCategory, Tool } from "@/types";
 
 // ============================================
+// SITE URL CONFIGURATION
+// ============================================
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://seotools-peach.vercel.app";
+
+// ============================================
 // CENTRALIZED TOOLS REGISTRY
+
 // ============================================
 // All tool metadata lives here. Dynamic pages are auto-generated
 // from this registry using generateStaticParams in route handlers.
@@ -25,6 +33,41 @@ export const toolCategories: ToolCategory[] = [
         popular: true,
         metaTitle: "Meta Tag Generator - Create SEO-Optimized Meta Tags",
         metaDescription: "Generate perfect meta titles and descriptions for your web pages. Improve click-through rates with our free meta tag generator tool.",
+
+        longDescription: `Meta tags are the first impression your page makes in search results. The title tag and meta description appear directly on the search engine results page (SERP) and heavily influence whether a user clicks through to your site. A well-crafted title tag should be concise, include your primary keyword near the beginning, and accurately reflect the page content. The meta description, while not a direct ranking factor, acts as ad copy for your organic listing — compelling descriptions can significantly lift click-through rates. This tool helps you draft both elements while respecting character limits: titles should stay under 60 characters to avoid truncation, and descriptions under 160 characters. It also flags common issues like duplicate titles across pages, missing descriptions, or keyword stuffing that can trigger search-engine penalties.`,
+        howToUse: [
+          "Enter your target keyword and a brief summary of the page topic.",
+          "Review the generated title tag and adjust it to match your brand voice.",
+          "Edit the meta description to include a clear call-to-action.",
+          "Copy the final HTML or export the tags for your CMS.",
+          "Paste the tags into the <head> section of your page and verify with a crawler."
+        ],
+        benefits: [
+          "Stays within Google's display limits so your full title and description appear in SERPs.",
+          "Prevents duplicate meta tags that dilute topical relevance across your site.",
+          "Helps you A/B test different copy to find the highest CTR variant.",
+          "Generates ready-to-paste HTML you can drop into any template or CMS."
+        ],
+        useCases: [
+          "Launching a new landing page and need optimized SERP copy before going live.",
+          "Refreshing stale meta descriptions on under-performing blog posts.",
+          "Creating consistent title-tag patterns for large e-commerce catalogs.",
+          "Auditing an inherited site where every page has the same generic meta tags."
+        ],
+        faq: [
+          {
+            question: "Do meta descriptions affect rankings directly?",
+            answer: "No, Google has confirmed meta descriptions are not a direct ranking factor. However, they strongly influence click-through rate, which indirectly affects rankings over time."
+          },
+          {
+            question: "What happens if my title tag is too long?",
+            answer: "Google typically truncates titles beyond ~60 characters and may append your brand name. Long titles can also dilute keyword prominence, so concise is better."
+          },
+          {
+            question: "Should every page have a unique meta description?",
+            answer: "Yes. Duplicate or missing meta descriptions force Google to generate its own snippet, which may not reflect your messaging or include your target keywords."
+          }
+        ],
       },
       {
         id: "header-analyzer",
@@ -57,6 +100,41 @@ export const toolCategories: ToolCategory[] = [
         featured: true,
         metaTitle: "Schema Markup Generator - JSON-LD Structured Data",
         metaDescription: "Generate JSON-LD schema markup for rich snippets. Support for Article, Product, FAQ, LocalBusiness and more.",
+
+        longDescription: `Schema markup is a standardized vocabulary of tags you add to your HTML to help search engines understand the context of your content. When implemented correctly, it can unlock rich snippets — enhanced search results that display ratings, prices, event dates, FAQ dropdowns, and more directly on the SERP. JSON-LD (JavaScript Object Notation for Linked Data) is Google's preferred format because it keeps structured data separate from your visible HTML, reducing the risk of display bugs. This generator produces valid JSON-LD scripts for common schemas including Article, Product, FAQPage, LocalBusiness, Organization, and BreadcrumbList. Each script is validated against Schema.org and Google's rich-results test criteria before you copy it.`,
+        howToUse: [
+          "Select the schema type that matches your content (Article, Product, FAQ, etc.).",
+          "Fill in the required fields such as name, description, and URL.",
+          "Add optional fields like image, author, or aggregate rating for richer results.",
+          "Click Generate to produce the JSON-LD script.",
+          "Paste the script into the <head> or <body> of your page and test with Google's Rich Results Test."
+        ],
+        benefits: [
+          "Unlocks rich snippets that increase visual footprint and CTR on the SERP.",
+          "Helps voice assistants like Google Assistant understand and surface your content.",
+          "Validates against Schema.org and Google's guidelines before you publish.",
+          "Supports multiple schema types so you can mark up articles, products, events, and local businesses."
+        ],
+        useCases: [
+          "Adding FAQ schema so your questions appear as expandable snippets in search results.",
+          "Marking up product pages with price, availability, and review stars for e-commerce.",
+          "Implementing LocalBusiness schema to improve visibility in map packs and local searches.",
+          "Creating BreadcrumbList schema to show clean URL paths in SERPs instead of raw URLs."
+        ],
+        faq: [
+          {
+            question: "Will schema markup guarantee rich snippets?",
+            answer: "No. Google decides whether to display rich snippets based on query relevance, site authority, and markup quality. However, correct schema is a prerequisite — without it, rich snippets are impossible."
+          },
+          {
+            question: "Where should I place the JSON-LD script?",
+            answer: "Google recommends placing JSON-LD in either the <head> or <body> of the page. Unlike microdata, it does not need to wrap around visible HTML elements."
+          },
+          {
+            question: "Can I use multiple schema types on one page?",
+            answer: "Yes. You can include multiple JSON-LD scripts on a single page. For example, an article can have Article schema, Author schema, and BreadcrumbList schema simultaneously."
+          }
+        ],
       },
       {
         id: "content-analyzer",
@@ -99,6 +177,41 @@ export const toolCategories: ToolCategory[] = [
         popular: true,
         metaTitle: "Site Speed Test - Check Page Load Time",
         metaDescription: "Test your website speed and get Core Web Vitals scores. Receive actionable optimization recommendations.",
+
+        longDescription: `Page speed is a confirmed Google ranking factor and a critical component of user experience. Studies show that every additional second of load time increases bounce rates and reduces conversions. Core Web Vitals — Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS) — are the specific metrics Google uses to evaluate page experience. LCP measures how quickly the main content loads; FID tracks interactivity delay; CLS quantifies visual stability. This tool analyzes your URL against these benchmarks, identifies render-blocking resources, oversized images, unoptimized JavaScript, and slow server response times. The report prioritizes fixes by impact so you can tackle the highest-ROI improvements first.`,
+        howToUse: [
+          "Enter the full URL of the page you want to test, including the protocol (https://).",
+          "Choose a test location closest to your primary audience for accurate latency readings.",
+          "Run the analysis and wait for the full waterfall and metric breakdown.",
+          "Review the prioritized recommendations list — items at the top have the biggest speed impact.",
+          "Implement the fixes, then re-test to measure improvement."
+        ],
+        benefits: [
+          "Measures real Core Web Vitals scores used by Google's page-experience algorithm.",
+          "Identifies render-blocking CSS and JavaScript that delay first paint.",
+          "Flags oversized images and suggests modern formats like WebP or AVIF.",
+          "Provides a prioritized action list so you fix the biggest bottlenecks first."
+        ],
+        useCases: [
+          "Benchmarking a new site before launch to ensure it passes Core Web Vitals.",
+          "Diagnosing a sudden traffic drop after a Google page-experience update.",
+          "Comparing mobile vs. desktop speed before prioritizing responsive optimizations.",
+          "Generating a speed audit report for a client to justify development resources."
+        ],
+        faq: [
+          {
+            question: "What is a good Core Web Vitals score?",
+            answer: "Google defines 'good' as LCP under 2.5 seconds, FID under 100 milliseconds, and CLS under 0.1. Scores outside these ranges need improvement or are considered poor."
+          },
+          {
+            question: "Does page speed affect SEO rankings?",
+            answer: "Yes. Since 2021, page experience signals including Core Web Vitals are part of Google's ranking algorithm. While content relevance remains primary, poor speed can push you below faster competitors."
+          },
+          {
+            question: "Why do mobile scores differ from desktop scores?",
+            answer: "Mobile devices typically have slower CPUs, higher latency, and smaller caches than desktops. Google primarily uses mobile-first indexing, so your mobile score is the one that matters most for SEO."
+          }
+        ],
       },
       {
         id: "mobile-friendly-test",
@@ -141,6 +254,41 @@ export const toolCategories: ToolCategory[] = [
         featured: true,
         metaTitle: "XML Sitemap Validator - Check Sitemap Format",
         metaDescription: "Validate your XML sitemap against Google and Bing standards. Check for errors and formatting issues.",
+
+        longDescription: `An XML sitemap is a roadmap you submit to search engines listing every URL you want indexed, along with metadata like last-modified dates, change frequencies, and priority scores. A malformed sitemap can prevent crawlers from discovering new content, waste crawl budget on broken URLs, or trigger warnings in Google Search Console. This validator checks your sitemap against the official Sitemap Protocol specification and Google's extended guidelines. It detects syntax errors, invalid URLs, oversized files, incorrect namespace declarations, and URLs blocked by robots.txt. The tool also warns if your sitemap exceeds the 50,000 URL or 50 MB limit, and suggests splitting large sitemaps into index files.`,
+        howToUse: [
+          "Paste your sitemap XML directly into the input field, or enter the public URL where it is hosted.",
+          "Click Validate to run the full specification check.",
+          "Review the error report — syntax issues are highlighted with line numbers.",
+          "Fix the reported issues in your sitemap generator or CMS.",
+          "Re-validate and then resubmit the corrected sitemap to Google Search Console."
+        ],
+        benefits: [
+          "Catches syntax errors that cause Google to reject the entire sitemap.",
+          "Flags URLs blocked by robots.txt so you don't waste crawl budget.",
+          "Warns when file size or URL count exceeds search-engine limits.",
+          "Validates namespace declarations required by the official Sitemap Protocol."
+        ],
+        useCases: [
+          "Validating a new sitemap before submitting it to Google Search Console for the first time.",
+          "Troubleshooting a 'Sitemap could not be read' error in Search Console.",
+          "Auditing an auto-generated e-commerce sitemap with thousands of product URLs.",
+          "Checking that hreflang sitemap extensions are correctly formatted for international sites."
+        ],
+        faq: [
+          {
+            question: "How often should I update my XML sitemap?",
+            answer: "Update it whenever you publish, remove, or significantly change a page. Most CMS plugins and static-site generators can auto-regenerate sitemaps on each build or publish event."
+          },
+          {
+            question: "Does a sitemap guarantee indexing?",
+            answer: "No. A sitemap helps discovery but does not force indexing. Google still evaluates content quality, relevance, and site authority before deciding to index a URL."
+          },
+          {
+            question: "What is the maximum size of an XML sitemap?",
+            answer: "The official limit is 50,000 URLs or 50 MB uncompressed, whichever comes first. If you exceed this, split your URLs across multiple sitemaps and reference them in a sitemap index file."
+          }
+        ],
       },
       {
         id: "robots-txt-checker",
@@ -172,6 +320,41 @@ export const toolCategories: ToolCategory[] = [
         popular: true,
         metaTitle: "Keyword Suggestion Tool - Find Keyword Ideas",
         metaDescription: "Discover new keyword opportunities. Enter a seed keyword and get hundreds of related suggestions with metrics.",
+
+        longDescription: `Keyword research is the foundation of every successful SEO strategy. Before you write a single sentence, you need to know what your audience is actually searching for — not just what you assume they want. This tool takes a seed keyword and expands it into hundreds of related terms using semantic analysis, search-autocomplete data, and question-based modifiers. Each suggestion includes search volume estimates, competition level, and cost-per-click data where available. The results are organized into thematic clusters so you can identify content gaps, plan editorial calendars, and build topic clusters that signal topical authority to search engines. Unlike basic autocomplete scrapers, this tool filters out branded terms, deduplicates close variants, and surfaces long-tail opportunities with commercial intent.`,
+        howToUse: [
+          "Enter a broad seed keyword that describes your product, service, or content niche.",
+          "Select your target country and language to localize search volume data.",
+          "Run the analysis and browse the clustered suggestions by theme (questions, comparisons, prepositions).",
+          "Export the full list or copy individual clusters into your content brief.",
+          "Map high-intent keywords to existing pages and flag gaps that need new content."
+        ],
+        benefits: [
+          "Expands one seed keyword into hundreds of related terms with search metrics.",
+          "Clusters suggestions by intent type: informational, navigational, transactional, and commercial investigation.",
+          "Surfaces question-based keywords that trigger featured snippets and voice search results.",
+          "Filters out branded noise so you focus on generic, rankable terms."
+        ],
+        useCases: [
+          "Planning a content calendar for a new blog in an unfamiliar niche.",
+          "Identifying low-competition long-tail terms for a new website with limited domain authority.",
+          "Building a topic-cluster strategy by grouping related keywords into pillar and sub-topic pages.",
+          "Finding comparison and review keywords for affiliate content with high commercial intent."
+        ],
+        faq: [
+          {
+            question: "What is a seed keyword?",
+            answer: "A seed keyword is a broad term that defines your niche or topic. For example, 'running shoes' is a seed keyword that can expand into 'best running shoes for flat feet,' 'lightweight running shoes,' and 'running shoes vs trainers.'"
+          },
+          {
+            question: "How accurate is the search volume data?",
+            answer: "Search volume is estimated from aggregated data sources and should be treated as directional rather than exact. Trends and relative comparisons between keywords are more reliable than absolute numbers."
+          },
+          {
+            question: "Should I target high-volume or low-competition keywords?",
+            answer: "New sites should prioritize low-competition, long-tail keywords to build authority before targeting high-volume head terms. Established sites can compete for broader keywords while maintaining a mix of both."
+          }
+        ],
       },
       {
         id: "keyword-difficulty",
@@ -214,6 +397,41 @@ export const toolCategories: ToolCategory[] = [
         featured: true,
         metaTitle: "SERP Preview Tool - Google Search Preview",
         metaDescription: "Preview how your page appears in Google search results. Optimize title and description for higher CTR.",
+
+        longDescription: `Search engine results pages are crowded. Your listing competes with ads, featured snippets, image packs, local packs, and video carousels — often above the traditional blue links. That means your organic result has less visual space and less time to earn a click. The SERP Preview Tool simulates exactly how your title tag, meta description, and URL will appear in Google's results on both desktop and mobile. It accounts for pixel-width truncation (not just character counts), bolding of query terms, and rich-result eligibility. You can test multiple title and description variants side-by-side, preview how they look with your favicon, and see whether your copy gets cut off on smaller screens. This removes the guesswork from meta-tag optimization and lets you iterate before publishing.`,
+        howToUse: [
+          "Enter your proposed title tag, meta description, and target URL.",
+          "Type a sample search query to see how Google bolds matching terms in your snippet.",
+          "Switch between desktop and mobile views to check truncation points.",
+          "Adjust the title and description until the full message fits within pixel limits.",
+          "Copy the final tags and implement them on your live page."
+        ],
+        benefits: [
+          "Simulates real Google SERP rendering including pixel-width truncation, not just character counts.",
+          "Shows how query-term bolding affects readability and visual weight.",
+          "Compares desktop and mobile previews so you optimize for both contexts.",
+          "Helps you craft compelling copy that stands out against competitors and rich results."
+        ],
+        useCases: [
+          "Finalizing title and description copy before launching a critical landing page.",
+          "A/B testing two headline variants to see which looks more compelling in actual search results.",
+          "Checking whether a long brand name pushes important keywords out of the visible title.",
+          "Previewing how a page will appear when it wins a featured snippet or sits in position zero."
+        ],
+        faq: [
+          {
+            question: "Why does the preview use pixel width instead of character count?",
+            answer: "Google truncates titles and descriptions based on pixel width, not character count. A title with many wide characters like 'W' or 'M' will be truncated sooner than one with narrow characters like 'i' or 'l.'"
+          },
+          {
+            question: "Does this tool show how rich results will look?",
+            answer: "The preview focuses on standard blue-link results. Rich results like stars, images, or FAQ dropdowns depend on schema markup and are not guaranteed — this tool helps you perfect the base snippet that appears underneath."
+          },
+          {
+            question: "Can I test multiple variants at once?",
+            answer: "Yes. You can save and compare multiple title-description pairs side-by-side to see which one maximizes visible information and click appeal."
+          }
+        ],
       },
       {
         id: "question-keyword",

@@ -1,3 +1,8 @@
+export interface ToolFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface Tool {
   id: string;
   name: string;
@@ -9,6 +14,13 @@ export interface Tool {
   popular?: boolean;
   metaTitle?: string;
   metaDescription?: string;
+
+  // Rich SEO content
+  longDescription?: string;
+  howToUse?: string[];
+  benefits?: string[];
+  useCases?: string[];
+  faq?: ToolFAQ[];
 }
 
 export interface ToolCategory {
