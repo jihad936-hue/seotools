@@ -463,7 +463,44 @@ export const toolCategories: ToolCategory[] = [
         popular: true,
         metaTitle: "Backlink Checker - Analyze Link Profile",
         metaDescription: "Check your backlink profile and referring domains. Analyze link quality and anchor text distribution.",
-      },
+      longDescription:
+  "A backlink profile shows which websites link to your pages and can reveal opportunities, risks, and changes in your site's authority. Reviewing backlinks regularly helps you understand how other sites reference your content and whether your link profile is growing naturally. This tool gives you a practical starting point for reviewing referring domains and individual backlinks in one place.",
+howToUse: [
+  "Enter the URL of the website or page you want to review.",
+  "Run the backlink check and wait for the available link data to load.",
+  "Review the referring domains and backlinks pointing to the target.",
+  "Look for useful referring sites, unusual links, and changes in your backlink profile.",
+  "Use the findings to plan link-building, content, and backlink-audit work."
+],
+benefits: [
+  "Provides a clearer view of the websites linking to your pages.",
+  "Helps identify potential link-building opportunities.",
+  "Makes backlink profile reviews easier during SEO audits.",
+  "Helps you monitor changes in your site's external link profile."
+],
+useCases: [
+  "Reviewing the backlink profile of an established website.",
+  "Finding referring domains that may provide future outreach opportunities.",
+  "Auditing backlinks after a major website or content change.",
+  "Comparing backlink patterns when researching competing websites."
+],
+faq: [
+  {
+    question: "What is a backlink?",
+    answer:
+      "A backlink is a link from another website to a page on your website. Search engines can use links as one signal when evaluating the relationships and authority of pages on the web."
+  },
+  {
+    question: "Why should I check my backlinks?",
+    answer:
+      "Regular backlink checks help you understand which websites reference your content, discover link-building opportunities, and spot unusual changes in your backlink profile."
+  },
+  {
+    question: "Are all backlinks equally valuable?",
+    answer:
+      "No. The usefulness of a backlink depends on factors such as the relevance and quality of the linking page and website. A large number of links does not automatically mean a stronger SEO profile."
+  }
+]},
       {
         id: "broken-link-finder",
         name: "Broken Link Finder",
@@ -525,7 +562,44 @@ export const toolCategories: ToolCategory[] = [
         popular: true,
         metaTitle: "Keyword Rank Checker - Google Position Tracker",
         metaDescription: "Check your keyword rankings in Google. Track positions across different locations and devices.",
-      },
+      longDescription:
+  "Keyword rankings show where your pages appear in search results for the queries that matter to your business. Tracking these positions over time helps you understand whether your SEO efforts are improving visibility, losing ground, or reaching new search opportunities. This tool provides a simple way to check keyword positions and evaluate changes in your search performance.",
+howToUse: [
+  "Enter the keyword or search query you want to check.",
+  "Enter the website or domain whose ranking you want to evaluate.",
+  "Select the relevant search location or device when those options are available.",
+  "Review the position shown for your website in the search results.",
+  "Record important changes and use them to guide your SEO and content strategy."
+],
+benefits: [
+  "Shows where your website appears for important search queries.",
+  "Helps monitor ranking changes after SEO and content updates.",
+  "Makes it easier to identify keywords that need further optimization.",
+  "Provides useful ranking information for ongoing SEO performance reviews."
+],
+useCases: [
+  "Checking the current Google position of an important target keyword.",
+  "Monitoring ranking changes after publishing or updating a page.",
+  "Evaluating whether an SEO campaign is improving search visibility.",
+  "Reviewing keyword performance when planning future content updates."
+],
+faq: [
+  {
+    question: "What is a keyword rank checker?",
+    answer:
+      "A keyword rank checker is an SEO tool that helps you determine where a website or page appears in search results for a specific keyword or search query."
+  },
+  {
+    question: "Why are keyword rankings important?",
+    answer:
+      "Keyword rankings help you understand how visible your pages are for target searches. Changes in rankings can provide useful feedback about your content and SEO performance."
+  },
+  {
+    question: "Can rankings differ by location or device?",
+    answer:
+      "Yes. Search results can vary depending on factors such as location, device, language, personalization, and search context. Comparing consistent conditions makes ranking changes easier to interpret."
+  }
+]},
       {
         id: "local-rank-tracker",
         name: "Local Rank Tracker",
@@ -575,7 +649,49 @@ export const toolCategories: ToolCategory[] = [
         featured: true,
         metaTitle: "Content Idea Generator - Blog Topic Ideas",
         metaDescription: "Generate content ideas and blog topics. Find trending subjects and create engaging content calendars.",
-      },
+     
+longDescription:
+  "Finding useful content topics consistently is an important part of a sustainable SEO strategy. A strong content idea should match what your audience is looking for, address a meaningful question or problem, and provide an opportunity to create a useful page. This tool helps turn broad topics into practical blog and content ideas that can support your editorial planning and organic search strategy.",
+
+howToUse: [
+  "Enter a broad topic, keyword, or subject related to your website.",
+  "Review the suggested content ideas and identify topics that match your audience.",
+  "Evaluate each idea based on search intent, relevance, and the value it can provide.",
+  "Select promising topics and turn them into detailed article or content briefs.",
+  "Organize the selected ideas into your content calendar and prioritize them by importance."
+],
+
+benefits: [
+  "Helps you discover new topics when your content calendar needs fresh ideas.",
+  "Turns broad subjects into more specific and actionable content opportunities.",
+  "Supports consistent content planning for SEO and audience growth.",
+  "Makes it easier to organize potential topics before writing begins."
+],
+
+useCases: [
+  "Planning a new blog content calendar for an SEO campaign.",
+  "Finding article ideas around an important target keyword.",
+  "Expanding an existing topic cluster with supporting content.",
+  "Generating fresh ideas when your publishing schedule needs new topics."
+],
+
+faq: [
+  {
+    question: "What is a content idea generator?",
+    answer:
+      "A content idea generator helps you discover potential topics for blog posts, articles, guides, and other content formats based on a subject or keyword."
+  },
+  {
+    question: "How should I choose between different content ideas?",
+    answer:
+      "Prioritize ideas that are relevant to your audience, match a clear search intent, provide useful information, and fit naturally into your overall content strategy."
+  },
+  {
+    question: "Can content ideas help with SEO?",
+    answer:
+      "Yes. Well-chosen content topics can help you cover relevant search queries, build topical depth, answer user questions, and create useful resources that support your organic search strategy."
+  }
+],},
       {
         id: "readability-checker",
         name: "Readability Checker",
