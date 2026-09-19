@@ -1659,3 +1659,128 @@ export function generateAllToolSlugs(): string[] {
 export function generateAllCategorySlugs(): string[] {
   return toolCategories.map((category) => category.slug);
 }
+
+export interface HeaderAnalysis {
+  totalHeaders: number;
+  h1Count: number;
+  h2Count: number;
+  h3Count: number;
+  h4Count: number;
+  h5Count: number;
+  h6Count: number;
+  hasH1: boolean;
+  multipleH1: boolean;
+  missingH1: boolean;
+  hierarchyIssues: string[];
+  hierarchy: { level: number; text: string; order: number }[];
+  recommendations: string[];
+}
+
+export function analyzeHeaders(htmlInput: string): HeaderAnalysis {
+  const cleanHtml = htmlInput.trim();
+  
+  if (!cleanHtml) {
+    return {
+      totalHeaders: 0,
+      h1Count: 0,
+      h2Count: 0,
+      h3Count: 0,
+      h4Count: 0,
+      h5Count: 0,
+      h6Count: 0,
+      hasH1: false,
+      multipleH1: false,
+      missingH1: true,
+      hierarchyIssues: [],
+      hierarchy: [],
+      recommendations: ['Please enter HTML or content to analyze']
+    };
+  }
+
+  const headerRegex = /<(h[1-6])([^>]*)>([\s\S]*?)<\/\1>/gi;
+const headers: { level: number; text: string }[] = [];
+let match;
+
+while ((match = headerRegex.exec(cleanHtml)) !== null) {
+  const level = parseInt(match[1][1], 10);
+  const text = match[3].replace(/<[^>]*>/g, '').trim();
+
+  headers.push({
+    level,
+    text: text || '(empty heading)',
+  });
+}
+
+const counts: Record<number, number> = {
+  1: 0,
+  2: 0,
+  3: 0,
+  4: 0,
+  5: 0,
+  6: 0,
+};
+
+headers.forEach((h) => counts[h.level]++);
+  const hierarchyIssues: string[] = [];
+  const recommendations: string[] = [];
+
+  if (counts[1] === 0) {
+    hierarchyIssues.push('Missing H1 tag - no H1 element found');
+    recommendations.push('Add at least one H1 tag. The H1 should be the main title of the page.');
+  } else if (counts[1] > 1) {
+    hierarchyIssues.push(`Found ${counts[1]} H1 tags (only one H1 is recommended)`);
+    recommendations.push(`You have ${counts[1]} H1 tags. There should be only one H1 per page. Convert the additional H1 tags to H2 or H3.`);
+  }
+
+  let lastLevel = 1;
+  headers.forEach((header, index) => {
+    if (index === 0) {
+      lastLevel = header.level;
+      return;
+    }
+    
+    if (header.level > lastLevel + 1) {
+      hierarchyIssues.push(`Hierarchy gap: H${lastLevel} → H${header.level} (position ${index + 1})`);
+      recommendations.push(`Don't skip levels from H${lastLevel} to H${header.level}. Add intermediate levels like H${lastLevel + 1} for proper hierarchical organization.`);
+    }
+    lastLevel = header.level;
+  });
+
+  if (counts[1] > 0) {
+    const firstHeader = headers.find(h => h.level === 1);
+    if (firstHeader) {
+      const firstHeaderIndex = headers.indexOf(firstHeader);
+      if (firstHeaderIndex > 2) {
+        recommendations.push('Place the H1 tag at the beginning of the main content (before H2 or H3).');
+      }
+    }
+  }
+
+  const emptyHeaders = headers.filter(h => h.text === '(empty heading)');
+  if (emptyHeaders.length > 0) {
+    hierarchyIssues.push(`Found ${emptyHeaders.length} empty heading(s)`);
+    recommendations.push(`Fill in the content of the following empty elements: ${emptyHeaders.map(h => `H${h.level}`).join(', ')}`);
+  }
+
+  const hierarchy = headers.map((h, index) => ({
+    level: h.level,
+    text: h.text,
+    order: index + 1
+  }));
+
+  return {
+    totalHeaders: headers.length,
+    h1Count: counts[1],
+    h2Count: counts[2],
+    h3Count: counts[3],
+    h4Count: counts[4],
+    h5Count: counts[5],
+    h6Count: counts[6],
+    hasH1: counts[1] > 0,
+    multipleH1: counts[1] > 1,
+    missingH1: counts[1] === 0,
+    hierarchyIssues,
+    hierarchy,
+    recommendations
+  };
+}

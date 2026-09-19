@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import MetaTagGenerator from "@/components/tools/MetaTagGenerator";
 import { generateSEO } from "@/lib/seo";
 import { 
   getToolBySlug, 
@@ -9,7 +10,7 @@ import {
 } from "@/lib/tools";
 import Container from "@/components/ui/Container";
 import Card from "@/components/ui/Card";
-import ToolInterface from "@/components/tools/ToolInterface";
+import ToolInterface, { ToolSpecificInterface } from "@/components/tools/ToolInterface";
 import ToolGrid from "@/components/tools/ToolGrid";
 import Link from "next/link";
 import { ArrowLeft, Wrench, ChevronRight, Home, LayoutGrid, FolderOpen } from "lucide-react";
@@ -289,20 +290,29 @@ export default async function ToolPage({
             </p>
           </div>
 
-          {/* Tool Interface */}
-          <Card className="p-6 mb-12">
-            <div className="text-center py-12">
-              <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
-                <Wrench className="w-8 h-8 text-primary-600" />
-              </div>
-              <h3 className="text-lg font-semibold text-secondary-900 dark:text-white mb-2">
-                Tool Interface
-              </h3>
-              <p className="text-secondary-500 max-w-md mx-auto">
-                This tool interface will be implemented with the specific functionality for {toolData.name}.
-              </p>
-            </div>
-          </Card>
+{/* Tool Interface */}
+{toolData.slug === "meta-tag-generator" ? (
+  <MetaTagGenerator />
+) : toolData.slug === "header-analyzer" ? (
+  <ToolSpecificInterface toolSlug={toolData.slug} />
+) : (
+  <Card className="p-6 mb-12">
+    <div className="text-center py-12">
+      <div className="w-16 h-16 rounded-2xl bg-primary-50 dark:bg-primary-900/30 flex items-center justify-center mx-auto mb-4">
+        <Wrench className="w-8 h-8 text-primary-600" />
+      </div>
+
+      <h3 className="text-lg font-semibold text-secondary-900 dark:text-white mb-2">
+        Tool Interface
+      </h3>
+
+      <p className="text-secondary-500 max-w-md mx-auto">
+        This tool interface will be implemented with the specific
+        functionality for {toolData.name}.
+      </p>
+    </div>
+  </Card>
+)}
 
           {/* Related Tools */}
           {relatedTools.length > 0 && (

@@ -1,5 +1,5 @@
 "use client";
-
+import HeaderTagAnalyzer from './HeaderTagAnalyzer';
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
@@ -110,7 +110,15 @@ export default function ToolInterface({
         <div className="animate-fade-in">
           {renderResult(result)}
         </div>
-      )}
-    </div>
+           )}
+   </div>
   );
+}
+
+export function ToolSpecificInterface({ toolSlug }: { toolSlug: string }) {
+  if (toolSlug === "header-analyzer") {
+    return <HeaderTagAnalyzer />;
+  }
+
+  return null;
 }
